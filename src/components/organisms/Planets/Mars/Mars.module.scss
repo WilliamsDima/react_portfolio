@@ -1,0 +1,25 @@
+@import '../style.scss';
+
+.planet-wrap {
+
+    @extend %planetWrapp;
+
+    .mars {
+    
+        @extend %planet;
+        
+        & .dark {
+            box-shadow: 0 0 14px -4px #8e4700;
+            
+            background: 
+                linear-gradient(104deg, rgba(0,0,0,1) 13%, rgba(255,255,255,0) 60%), 
+                linear-gradient(147deg, rgba(0,0,0,1) 15%, rgba(255,255,255,0) 40%), 
+                linear-gradient(60deg, rgba(0,0,0,1) 17%, rgba(255,255,255,0) 40%);
+        }
+        
+        .background{
+            animation: translateBackground 45s infinite linear;  
+            background:url('../../../../assets/images/planets/mars.jpg') repeat-x;
+        }
+    }
+}

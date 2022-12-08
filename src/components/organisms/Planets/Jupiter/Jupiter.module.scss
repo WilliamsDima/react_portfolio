@@ -1,0 +1,26 @@
+@import '../style.scss';
+
+.planet-wrap {
+
+    @extend %planetWrapp;
+
+    .jupiter {
+    
+        @extend %planet;
+        
+    
+        & .dark {
+            box-shadow: 0 0 14px -4px #191817;
+            
+            background: 
+                linear-gradient(104deg, rgb(0, 0, 0) 16%, rgba(255, 255, 255, 0) 100%), 
+                linear-gradient(147deg, rgb(0, 0, 0) 15%, rgba(255, 255, 255, 0) 50%), 
+                linear-gradient(61deg, rgb(0, 0, 0) 20%, rgba(255, 255, 255, 0) 50%)
+        }
+        
+        .background {
+            animation: translateBackground 5s infinite linear;  
+            background:url('../../../../assets/images/planets/Jupiter.jpg') repeat-x;
+        }
+    }
+}

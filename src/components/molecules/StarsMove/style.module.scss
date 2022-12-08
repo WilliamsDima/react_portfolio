@@ -1,0 +1,28 @@
+.stars {
+    opacity: 0.4;
+}
+
+.start {
+    animation-name: hiddenStars;
+    animation-duration: 3s;
+    animation-timing-function: ease-out;
+    animation-iteration-count: 1;
+    animation-delay: 15s;
+    animation-fill-mode: forwards;
+    opacity: 1;
+    
+
+      @keyframes hiddenStars {
+          0% {
+            opacity: 0;    
+          }
+
+          50% {
+            opacity: 1;
+          }
+
+          100% {
+            opacity: 0;  
+          }
+      }
+}

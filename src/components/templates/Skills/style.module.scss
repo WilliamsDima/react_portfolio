@@ -1,0 +1,25 @@
+@import '../../../assets/styles/global.scss';
+
+.container {
+
+    @extend %pageContent;
+
+    .pageContent {
+
+        @media screen and (max-width: 1050px) {
+            margin: 0;
+            padding-bottom: 7rem;
+        }
+
+        .text {
+            text-align: justify;
+            line-height: 1.5;
+            margin-bottom: 2rem;
+            font-size: 1.8rem;
+      
+            button {
+                color: #08FDD8;
+            }
+        }
+    }
+}

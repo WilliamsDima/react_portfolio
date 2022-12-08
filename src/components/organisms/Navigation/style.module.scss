@@ -1,0 +1,46 @@
+@import '../../../assets/styles/global.scss';
+
+.nav {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    z-index: 10;
+    padding: 3rem 5rem;
+    width: 100%;
+    display: flex;
+    justify-content: end;
+    align-items: center;
+
+    @extend %showText;
+
+    .sound {
+        margin-right: 4rem;
+        position: relative;
+
+        &.off {
+            &::after, &::before {
+                content: '';
+                position: absolute;
+                width: 100%;
+                height: 2px;
+                background-color: red;
+                top: 50%;
+                left: 0;
+                transform: translate(-50%);
+            }
+
+            &::after {
+                transform: rotate(-45deg);
+            }
+
+            &::before {
+                transform: rotate(45deg);
+            }
+
+        }
+    }
+
+    .atom {
+        transform: scale(0.2);
+    }
+}

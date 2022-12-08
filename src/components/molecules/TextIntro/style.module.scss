@@ -1,0 +1,64 @@
+@import '../../../assets/styles/global.scss';
+
+.intro {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%);
+    z-index: 10;
+    width: 100%;
+    text-align: center;
+
+    font-size: 2rem;
+    letter-spacing: 1rem;
+    text-transform: uppercase;
+
+
+    .intro_text {
+        position: relative;
+
+        span {
+            opacity: 0; 
+            transition: opacity .5s linear;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%);
+
+            @media screen and (max-width: 1000px) {
+                font-size: 1.2rem;
+            }
+
+            &.one {
+
+                @extend %introAnim;
+
+                animation-duration: 2s;
+                animation-delay: 2s;
+
+            }
+
+            &.two {
+
+                @extend %introAnim;
+
+                animation-duration: 5s;
+                animation-delay: 5s;
+            }
+
+            &.three {
+                @extend %introAnim;
+
+                animation-duration: 5s;
+                animation-delay: 10s;
+            }
+
+            &.four {
+                @extend %introAnim;
+
+                animation-duration: 5s;
+                animation-delay: 17s;
+            }
+        }
+    }
+}

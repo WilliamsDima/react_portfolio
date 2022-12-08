@@ -1,0 +1,17 @@
+.item {
+
+  .text {
+      text-align: justify;
+      line-height: 1.5;
+      margin-bottom: 2rem;
+      font-size: 1.8rem;
+
+      span, a {
+          color: #08FDD8;
+      }
+
+      a {
+        text-decoration: underline;
+      }
+  }
+}

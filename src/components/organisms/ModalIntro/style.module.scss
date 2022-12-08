@@ -1,0 +1,66 @@
+@import '../../../assets/styles/colors.scss';
+
+.content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 1rem 2rem;
+    border: 1px solid $white;
+    flex-direction: column;
+    width: 100%;
+    border-radius: 5px;
+
+    .text {
+      text-align: center;
+
+      p {
+        font-size: 18px;
+      }
+      
+      .warn {
+        color: red;
+        font-size: 30px;
+        font-weight: 800;
+      }
+
+    }
+
+    .btns {
+      display: flex;
+      width: 100%;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: 1rem;
+
+      .pulse {
+        color: $white;
+        transition: 0.25s;
+        border-radius: 5px;
+        padding: 1rem;
+        width: 100px;
+        transition: all .2s linear;
+
+        &:nth-child(1) {
+          animation: pulseAll 3s linear infinite;
+          animation-delay: 1s;
+
+          @keyframes pulseAll {
+            0% { box-shadow: 0 0 0 0 $white; }
+            50% { box-shadow: 0 0 0 5px transparent; }
+            100% { box-shadow: 0 0 0 0 transparent; }
+          }
+        }
+
+        
+        @keyframes pulse {
+          0% { box-shadow: 0 0 0 0 $white; }
+        }
+
+        &:hover, 
+        &:focus {
+          animation: pulse 1s;
+          box-shadow: 0 0 0 5px transparent;
+        }
+      }
+    }
+}

@@ -1,0 +1,30 @@
+@import '../../../assets/styles/global.scss';
+
+.circles {
+
+  @extend %showText ;
+
+  > div {
+    position: absolute;
+    width: 300px;
+    height: 300px;
+    animation: circles 5s infinite ease-in-out;
+
+    right: -400px;
+    bottom: -350px;
+    box-shadow: -160px -100px 400px #f9aa14;
+    z-index: 7;
+  }
+}
+
+@keyframes circles {
+    0% {
+      opacity: .25;
+    }
+    50% {
+      opacity: .5;
+    }
+    100% {
+      opacity: .25;
+    }
+}

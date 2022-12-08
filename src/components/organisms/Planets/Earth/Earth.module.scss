@@ -1,0 +1,48 @@
+@import '../style.scss';
+
+.planet-wrap {
+
+    @extend %planetWrapp;
+
+    .earth {
+        @extend %planet;
+          
+    
+        & .dark {
+
+            box-shadow: 0 0 38px -12px blue;
+            animation: shadowEarth 1s linear alternate infinite;
+            
+            background: 
+                linear-gradient(104deg, rgba(0,0,0,1) 13%, rgba(255,255,255,0) 60%), 
+                linear-gradient(147deg, rgba(0,0,0,1) 15%, rgba(255,255,255,0) 40%), 
+                linear-gradient(60deg, rgba(0,0,0,1) 17%, rgba(255,255,255,0) 40%);
+        }
+        
+        @keyframes shadowEarth {
+            0% {
+                box-shadow: 0 0 40px -12px blue;
+            }
+            
+            100% {
+                box-shadow: 0 0 30px -12px blue;
+            }
+        }
+        
+        .background{
+            animation: translateBackground 40s infinite linear;  
+            background:url('../../../../assets/images/planets/earth.jpg') repeat-x;
+    
+        }
+        
+        .clouds {
+            background:url('../../../../assets/images/planets/clouds.png') repeat-x;
+            width:300px;
+            height:300px;
+            position:absolute;
+            border-radius:50%;
+            animation: translateBackground 30s infinite linear;
+            opacity: 0.4;
+        }
+    }
+}

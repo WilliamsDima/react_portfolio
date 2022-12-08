@@ -1,0 +1,54 @@
+.intro {
+    animation-name: flash;
+    animation-duration: 12s;
+    animation-timing-function: ease-out;
+    animation-iteration-count: 1;
+    animation-delay: 15s;
+    animation-fill-mode: forwards;
+    background-color: rgba($color: #fff, $alpha: 0);  
+
+    .skip {
+      position: absolute;
+      top: 80%;
+      left: 50%;
+      transform: translate(-50%);
+      color: #fff1a2;
+
+      animation-name: skip;
+      animation-duration: 4s;
+      animation-timing-function: ease-out;
+      animation-iteration-count: 1;
+      animation-delay: 2s;
+      animation-fill-mode: forwards;
+      opacity: 0; 
+      
+  
+        @keyframes skip {
+            0% {
+                opacity: 0;    
+            }
+
+            50% {
+                opacity: 1;    
+            }
+            100% {
+                opacity: 0;  
+            }
+        }
+    }
+    
+
+      @keyframes flash {
+          0% {
+            background-color: rgba($color: #fff, $alpha: 0);    
+          }
+
+          50% {
+            background-color: rgba($color: #fff, $alpha: 1);    
+          }
+
+          100% {
+            background-color: rgba($color: #fff, $alpha: 0);  
+          }
+      }
+}

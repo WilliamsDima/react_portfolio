@@ -1,0 +1,94 @@
+%planetWrapp {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    z-index: 4;
+    opacity: 1;
+    visibility: visible;
+    transition: cubic-bezier(0.785, 0.135, 0.15, 0.86) all 1.5s;
+
+    animation-name: showPlanet;
+    animation-duration: 2s;
+    animation-timing-function: ease-out;
+    animation-iteration-count: 1;
+    animation-delay: 0.5s;
+    animation-fill-mode: forwards;
+    transform: scale(0) translateX(700%) translateY(-50%); 
+
+    @keyframes showPlanet {
+        0% {
+            transform: scale(0) translateX(700%) translateY(-50%); 
+        }
+        100% {
+            transform: scale(1.5) translateX(70%) translateY(-50%); 
+        }
+    }
+
+    @media screen and (max-width: 1050px) {
+        right: 50%;
+        transform: scale(1) translateY(-50%) translateX(50%);
+    }
+}
+
+%planet {
+    position: relative;
+    z-index: 2;
+
+    & .planet{
+        width:300px;
+        height:300px;
+        position:absolute;
+        border-radius:50%;
+        overflow:hidden;
+
+        left:50%;
+        top:50%;
+        margin:-150px;
+        z-index: -1;
+
+        opacity: 1;
+    }
+
+    & .dark {
+        position: relative;
+        top: 40%;
+
+        border-radius:50%;
+        width:300px;
+        height:300px;
+        opacity: 1;
+    }
+
+    .planet .mask{
+        width:100%;
+        height:100%;
+        position: absolute;
+        box-shadow:inset -10px -10px 40px #251303, inset 10px 10px 30px -10px rgba(255, 204, 159, 0.6);
+        border-radius:50%;
+    }
+
+    .background {  
+        width:300px;
+        height:300px;
+        position:absolute;
+        border-radius:50%;
+
+        @keyframes translateBackground{
+            0%{
+                background-position-x:0;
+            }
+            100%{
+                background-position-x:-600px;
+            }
+        }
+    }
+
+    .wrap {
+        width:300px;
+        height:300px;
+        position:absolute;
+        border-radius:50%;
+        transform:rotateZ(23.5deg);
+    }
+}
+

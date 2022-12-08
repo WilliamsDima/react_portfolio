@@ -1,0 +1,66 @@
+@import '../../../assets/styles/global.scss';
+
+.page {
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+
+    .textTop {
+        position: absolute;
+        top: 0;
+        display: flex;
+        width: 100%;
+        justify-content: space-between;
+        z-index: 3;
+        opacity: .3;
+
+        @extend %showText;
+
+      
+        @media screen and (max-width: 1050px) {
+            top: 0;
+        }
+      
+        p {
+            font-style: italic;
+            color: #575757;
+            display: flex;
+            svg {
+                width: 10px;
+                margin: 0 5px;
+                opacity: .3;
+      
+                path {
+                    color: #08FDD8;
+                }
+            }
+        }
+    }
+
+    .content {
+        position: relative;
+        z-index: 5;
+        opacity: 0;
+        visibility: visible;
+        height: 100vh;
+        width: 100vw;
+        transition: all 1.5s ease-in-out;
+
+        display: flex;
+        align-items: center;
+
+        @extend %showText;
+
+        @media screen and (max-width: 1050px) {
+          display: block;
+          overflow-y: scroll;
+          overflow-x: hidden;
+          height: 100%;
+          width: 100%;
+          // margin-bottom: 7rem;
+        }
+    }
+}

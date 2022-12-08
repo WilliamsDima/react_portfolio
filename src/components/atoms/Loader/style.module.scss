@@ -1,0 +1,198 @@
+@import '../../../assets/styles/colors.scss';
+
+.atom-wrapper {
+    position: absolute;
+    top: 50%;
+    right: 50%;
+    z-index: 7;
+    width: 55px;
+    height: 55px;
+    // cursor: pointer;
+    transform: translateX(50%) translateY(-50%) scale(3);
+    opacity: 0;
+    visibility: hidden;
+    transition: all .2s linear;
+
+    &.pulse {
+        border-radius: 50%;
+
+        box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.4);
+        animation: pulse 2s infinite;
+
+        &:hover {
+            animation: none;
+        }
+
+        
+        @keyframes pulse {
+            0% {
+                background-color: rgba(223, 223, 223, 0.4);
+                box-shadow: 0 0 0 0 rgba(223, 223, 223, 0.4);
+            }
+            70% {
+                background-color: rgba(151, 151, 151, 0);
+                box-shadow: 0 0 0 50px rgba(151, 151, 151, 0);
+            }
+            100% {
+                background-color: rgba(134, 134, 134, 0);
+                box-shadow: 0 0 0 0 rgba(134, 134, 134, 0);
+            }
+        }
+    }
+
+    &.active {
+        opacity: 1;
+        visibility: visible;
+    }
+  
+  .atom {
+  
+    > div { 
+      position: absolute; 
+      top: 0;
+      left: 0;
+      margin-left: 0;
+      width: 55px; 
+      height: 55px; 
+      border-radius: 50%; 
+      border: 3px solid blue;
+      -webkit-transform-style: preserve-3d; 
+      -webkit-transform: rotateX(80deg) rotateY(20deg);
+      transform-style: preserve-3d; 
+      transform: rotateX(80deg) rotateY(20deg);
+      transition: all .2s linear;
+    }
+  
+    > div:first-of-type:after {
+      content: "";
+      position: absolute;
+      height: 7px;
+      width: 7px;
+      background: $main;
+      border-radius: 50%;
+      -webkit-transform: rotateX(-80deg) rotateY(0);
+      transform: rotateX(-80deg) rotateY(0);
+      box-shadow: 0 0 25px #fff;
+      -webkit-animation: nucleus_ 2s infinite linear;
+      animation: nucleus_ 2s infinite linear;
+      left: 84%;
+      top: 88%;
+      margin-top: -20px;
+      margin-left: -20px;
+    }
+  
+     > div:nth-of-type(2) {
+      -webkit-transform: rotateX(-80deg) rotateY(20deg);
+      transform: rotateX(-80deg) rotateY(20deg);
+    }
+  
+     > div:nth-of-type(3) {
+      -webkit-transform: rotateX(-70deg) rotateY(60deg);
+      transform: rotateX(-70deg) rotateY(60deg);
+    }
+  
+     > div:nth-of-type(4) {
+      -webkit-transform: rotateX(70deg) rotateY(60deg);
+      transform: rotateX(70deg) rotateY(60deg);
+    }
+  
+     > div > div {
+      width: 55px;
+      height: 55px;
+      position: relative;
+      -webkit-transform-style: preserve-3d;
+      -webkit-animation: trail_ 2s infinite linear;
+      transform-style: preserve-3d;
+      animation: trail_ 2s infinite linear;
+    }
+  
+     > div > div:after {
+      content: ""; 
+      position: absolute; 
+      top: 0px; 
+      box-shadow: 0 0 12px #fff;
+      left: 30%; 
+      margin-left: 0px; 
+      width: 5px; 
+      height: 5px; 
+      border-radius: 50%;
+      background-color: #ffffff;
+      -webkit-animation: particle_ 2s infinite linear;
+      animation: particle_ 2s infinite linear;
+    }
+  
+     > div:nth-of-type(2) > div,
+     > div:nth-of-type(2) > div:after {
+      -webkit-animation-delay: -.5s;
+      animation-delay: -.5s;
+    }
+  
+     > div:nth-of-type(3)  > div,
+     > div:nth-of-type(3)  > div:after {
+      -webkit-animation-delay: -1s;
+      animation-delay: -1s;
+    }
+  
+     > div:nth-of-type(4) > div,
+     > div:nth-of-type(4) > div:after {
+      -webkit-animation-delay: -1.5s;
+      animation-delay: -1.5s;
+    }
+  
+    @-webkit-keyframes trail_ { 
+        from {
+            -webkit-transform: rotateZ(0deg);
+        } to {
+            -webkit-transform: rotateZ(360deg);
+        }
+    }
+  
+    @keyframes trail_ { 
+        from {
+            transform: rotateZ(0deg);
+        } to {
+            transform: rotateZ(360deg);
+        }
+    }
+  
+    @-webkit-keyframes particle_ { 
+        from {
+            -webkit-transform: rotateX(90deg) rotateY(0deg); 
+            transform: rotateX(90deg) rotateY(0deg); 
+        } to {
+          -webkit-transform: rotateX(90deg) rotateY(-360deg);  
+            transform: rotateX(90deg) rotateY(-360deg); 
+        } 
+    }
+  
+  
+    @keyframes particle_ { 
+        from {
+            transform: rotateX(90deg) rotateY(0deg); 
+        } to { 
+            transform: rotateX(90deg) rotateY(-360deg); 
+        } 
+    }
+  
+    @keyframes nucleus_ { 
+        0% {
+            box-shadow: 0 0 0 transparent;
+        } 50% { 
+            box-shadow: 0 0 25px #fff;
+        } 100% { 
+            box-shadow: 0 0 0 transparent;
+        }
+    }
+  
+    @-webkit-keyframes nucleus_ { 
+        0% {
+            box-shadow: 0 0 0 transparent;
+        } 50% { 
+            box-shadow: 0 0 25px #fff;
+        } 100% { 
+            box-shadow: 0 0 0 transparent;
+        }
+    }
+  }
+
+}

@@ -1,0 +1,60 @@
+@import '../../../assets/styles/colors.scss';
+
+.nav {
+    display: flex;
+    justify-content: flex-end;
+    align-items: end;
+    flex-direction: column;
+
+    position: absolute;
+    top: calc(-100vh + 9rem);
+    right: 0rem;
+    width: 100vw;
+    height: 100vh;
+
+    transform: translateX(100vw);
+    transition: all .8s cubic-bezier(0.075, 0.82, 0.165, 1);
+
+    .container {
+        display: flex;
+        justify-content: center;
+        align-items: end;
+        flex-direction: column;
+        padding: 2rem;
+        margin-bottom: 7rem;
+    }
+
+    &.active {
+        transform: translateX(0);
+    }
+
+    
+    a {
+        margin-bottom: 1rem;
+        font-size: 20px;
+        
+        &.linkActive {
+            color: $main;
+        }
+    }
+
+    @media screen and (max-width: 550px) {
+        align-items: end;
+        top: calc(-100vh + 10rem);
+        transform: translateX(100vw);
+        padding: 0;
+
+        .container {
+            margin: 0;
+            padding: 0;
+            align-items: center;
+            height: 100%;
+            width: 45%;
+            background-color: rgba($color: #000000, $alpha: 0.8);
+        }
+
+        &.active {
+            transform: translateX(0);
+        }
+    }
+}
