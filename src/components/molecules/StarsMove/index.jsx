@@ -26,9 +26,9 @@ const StarsMove = ({speed = 2, start = false}) => {
     
         // star constructor
         function Star() {
-            this.x = Math.random() * stars.current.width;
-            this.y = Math.random() * stars.current.height;
-            this.z = Math.random() * stars.current.width;
+            this.x = Math.random() * stars?.current?.width;
+            this.y = Math.random() * stars?.current?.height;
+            this.z = Math.random() * stars?.current?.width;
     
             this.move = function() {
                 this.z -= boostSpeed;

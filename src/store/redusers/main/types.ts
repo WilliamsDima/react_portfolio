@@ -1,9 +1,8 @@
-export interface IWork {
-    date: string
-    link: string
-    name: string
-    technology: string[]
+export interface IImage {
+    id: number
+    urls?: string[]
 }
+
 
 export interface IMain {
     title: string
@@ -32,8 +31,12 @@ export interface ISkills {
 }
 
 export interface IWorks {
-    title: string
-    works: IWork[]
+    id: number
+    date: Date
+    name: string
+    folder: string
+    link: string
+    technology: string[]
 }
 
 
@@ -41,7 +44,7 @@ export type Data = {
     main: IMain
     about: IAbout
     skills: ISkills
-    works: IWorks
+    works: IWorks[]
 }
 
 export interface IStore {
@@ -49,7 +52,8 @@ export interface IStore {
     main: IMain | null
     about: IAbout | null
     skills: ISkills | null
-    works: IWorks | null
+    works: IWorks[] | null
     skipIntro: boolean
     sound: boolean
+    images: IImage[] | null
 }

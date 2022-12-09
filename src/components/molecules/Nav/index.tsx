@@ -2,6 +2,10 @@ import cn from 'classnames'
 import { FC } from 'react'
 import { Link, useLocation } from 'react-router-dom'
 import { useAppSelector, useAudio } from '../../../hooks/hooks'
+import CodeSvg from '../../atoms/Icons/Code'
+import DevSvg from '../../atoms/Icons/Dev'
+import HomeSvg from '../../atoms/Icons/HomeSvg'
+import PortfolioSvg from '../../atoms/Icons/Portfolio'
 import styles from './style.module.scss'
 
 type Nav = {
@@ -35,19 +39,31 @@ const Nav: FC<Nav> = ({active, close}) => {
             <div className={styles.container} onClick={(e: any) => e.stopPropagation()}>
                 <Link className={cn({
                     [styles.linkActive]: pathname === '/'
-                })} to={'/'} onClick={linkHandler}>Главная</Link>
+                })} to={'/'} onClick={linkHandler}>
+                    Главная
+                    <HomeSvg />
+                </Link>
 
                 <Link className={cn({
                     [styles.linkActive]: pathname === '/about'
-                })} to={'/about'} onClick={linkHandler}>Обо мне</Link>
+                })} to={'/about'} onClick={linkHandler}>
+                    Обо мне
+                    <DevSvg />
+                </Link>
 
                 <Link className={cn({
                     [styles.linkActive]: pathname === '/skills'
-                })} to={'/skills'} onClick={linkHandler}>Навыки</Link>
+                })} to={'/skills'} onClick={linkHandler}>
+                    Навыки
+                    <CodeSvg />
+                </Link>
 
                 <Link className={cn({
                     [styles.linkActive]: pathname === '/works'
-                })} to={'/works'} onClick={linkHandler}>Портфолио</Link>
+                })} to={'/works'} onClick={linkHandler}>
+                    Портфолио
+                    <PortfolioSvg />
+                </Link>
             </div>
         </div>
     )

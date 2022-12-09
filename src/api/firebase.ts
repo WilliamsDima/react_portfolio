@@ -1,6 +1,7 @@
 import { initializeApp } from "firebase/app"
-import { getStorage } from "firebase/storage"
+import { getDownloadURL, getStorage, listAll, ref } from "firebase/storage"
 import { getFirestore, doc, getDoc } from "firebase/firestore/lite"
+import { IImage, IWorks } from "../store/redusers/main/types"
 
 const firebaseConfig = {
     apiKey: process.env.REACT_APP_FIREBASE_API_KEY,
@@ -20,8 +21,29 @@ export const getData = async () => {
     const docRef = doc(db, "portfolio", 'data')
     const docSnap = await getDoc(docRef)
     const data = docSnap.data()
-
-    console.log('data', data);
     
     return data
+}
+
+export const getImagesWorks = async (works: IWorks[] | null) => {
+
+    const urls: any = works?.map(async (work) => {
+
+        const imageListRef = ref(storage, `works/${work.folder}`)
+
+        const { items } = await listAll(imageListRef)
+
+        const images = items.map(async(item: any) => {
+            return await getDownloadURL(item)
+        })
+
+        return Promise.all(images).then((values) => {
+            return {
+                id: work.id,
+                urls: values
+            }
+        })
+    })
+    
+    return urls
 }

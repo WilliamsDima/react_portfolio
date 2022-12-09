@@ -1,0 +1,23 @@
+@import '../../../assets/styles/global.scss';
+
+.container {
+
+    @extend %pageContent;
+
+    .pageContent {
+
+        @media screen and (max-width: 1050px) {
+            margin: 0;
+            padding-bottom: 10rem;
+        }
+
+        .link-add-team {
+            color: #08FDD8;
+            cursor: pointer;
+            
+            &:hover {
+                text-decoration: underline;
+            }
+        }
+    }
+}

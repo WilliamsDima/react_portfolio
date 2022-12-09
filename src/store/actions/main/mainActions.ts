@@ -17,4 +17,7 @@ export const mainActions: MainActions = {
     setSound: (state, { payload }) => {
         state.sound = payload
     },
+    setImages: (state, { payload }) => {
+        state.images = payload
+    },
 }

@@ -20,7 +20,7 @@
         justify-content: center;
         align-items: end;
         flex-direction: column;
-        padding: 2rem;
+        padding: 2rem 0;
         margin-bottom: 7rem;
     }
 
@@ -32,9 +32,53 @@
     a {
         margin-bottom: 1rem;
         font-size: 20px;
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+        position: relative;
+        text-align: center;
+        width: 100%;
+        padding: 0 2rem;
+        transition: all .2s cubic-bezier(0.215, 0.610, 0.355, 1);
+
+        @media screen and (max-width: 550px) {
+            justify-content: center;
+        }
+
+        svg {
+            fill: $white;
+        }
+
+        svg {
+            position: absolute;
+            top: 50%;
+            right: 0;
+            transform:  translateY(-50%) translateX(5rem);
+            transition: all .2s cubic-bezier(0.215, 0.610, 0.355, 1);
+
+            @media screen and (max-width: 550px) {
+                display: none;
+            }
+        }
+
+        &:hover {
+            transform:  translateX(-4rem);
+
+            @media screen and (max-width: 550px) {
+                transform:  translateX(0);
+            }
+
+            svg {
+                transform: translateY(-50%) translateX(2rem);
+            }
+        }
         
         &.linkActive {
             color: $main;
+
+            svg {
+                fill: $main;
+            }
         }
     }
 

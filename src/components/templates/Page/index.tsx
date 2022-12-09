@@ -1,13 +1,11 @@
 import React, {FC, ReactNode, useEffect} from 'react'
-import useSound from 'use-sound'
-import { getData } from '../../../api/firebase'
+import { getData, getImagesWorks } from '../../../api/firebase'
 import { useActions, useAppSelector } from '../../../hooks/hooks'
 import { Circles } from '../../atoms/Circles/Circles'
 import Loader from '../../atoms/Loader'
 import Navigation from '../../organisms/Navigation'
 import Stars from '../../organisms/StarsBG'
 import styles from './style.module.scss'
-import ambient from '../../../assets/audio/ambient.mp3'
 
 type Page = {
     children: ReactNode
@@ -15,14 +13,8 @@ type Page = {
 
 const Page: FC<Page> = ({children}) => {
 
-    const { setData } = useActions()
-    const { data, skipIntro, sound } = useAppSelector(store => store.main)
-
-    const [play, {stop}] = useSound(ambient, 
-        {
-            volume: 0.7
-        });
-
+    const { setData, setImages } = useActions()
+    const { data, skipIntro, works, images } = useAppSelector(store => store.main)
     
     const setDataHandler = async () => {
         const res = await getData()
@@ -30,20 +22,29 @@ const Page: FC<Page> = ({children}) => {
         setData(res)
     }
 
+    const getImages = async () => {
+
+        const urls: any = await getImagesWorks(works)
+
+        Promise.all(urls).then((values) => {
+            setImages([...values])
+        })
+    }
+
     useEffect(() => {
+
+        console.log('page render...', images);
+        
         
         if (!data) {
             setDataHandler()
         }
 
-
-        if (sound) {
-            play()
-        } else {
-            stop()
+        if (works && !images) {
+            getImages()
         }
         
-    }, [sound])
+    }, [data, images])
 
     return (
         <div className={styles.page}>
@@ -51,7 +52,7 @@ const Page: FC<Page> = ({children}) => {
                 {children}
             </section>
 
-            <Loader active={!data} />
+            <Loader active={!data && !images} />
             <Stars />
             
             {(skipIntro || sessionStorage.getItem('skip-intro')) && 

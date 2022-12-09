@@ -1,4 +1,4 @@
-import { useEffect, useState, FC } from 'react'
+import { useEffect, useState, FC, memo } from 'react'
 import { useActions, useAppSelector } from '../../../hooks/hooks'
 import styles from './style.module.scss'
 import cn from 'classnames'
@@ -7,21 +7,20 @@ import Modal from '../../organisms/Modal'
 import ModalIntro from '../../organisms/ModalIntro'
 import StarsMove from '../../molecules/StarsMove'
 import MainContent from '../../organisms/MainContent'
+import { IStore } from '../../../store/redusers/main/types'
 
 type Home = {
  
 }
 
-const HomeTemplate: FC<Home> = ({}) => {
+const HomeTemplate: FC<Home> = memo(({}) => {
 
-    const { data, skipIntro } = useAppSelector(state => state.main)
+    const { data, skipIntro } = useAppSelector((state: { main: IStore }) => state.main)
     const { setSkip, setSound } = useActions()
 
     const [startIntro, setStartIntro] = useState(false)
     const [endIntro, setEndIntro] = useState(false)
     const [modal, setModal] = useState(true)
-
-
 
     let endIntroTimer: NodeJS.Timeout | undefined;
 
@@ -81,6 +80,6 @@ const HomeTemplate: FC<Home> = ({}) => {
             </div>
         </main>
     )
-}
+})
 
 export default HomeTemplate

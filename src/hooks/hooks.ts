@@ -1,10 +1,12 @@
 import { TypedUseSelectorHook, useDispatch, useSelector } from 'react-redux'
 import useSound from 'use-sound'
 import type { RootState, AppDispatch } from '../store/index'
-import { setData, setSkip, setSound } from '../store/redusers/main/main'
+import { setData, setImages, setSkip, setSound } from '../store/redusers/main/main'
 import btn from '../assets/audio/btn.mp3'
 import wooh from '../assets/audio/wooh.mp3'
 import woohv2 from '../assets/audio/woohv2.mp3'
+import ambient from '../assets/audio/ambient.mp3'
+import { IImage } from '../store/redusers/main/types'
 
 export const useAppDispatch: () => AppDispatch = useDispatch
 export const useAppSelector: TypedUseSelectorHook<RootState> = useSelector
@@ -21,14 +23,34 @@ export const useActions = () => {
         },
         setSound: (value: boolean) => {
             dispatch(setSound(value))
+        },
+        setImages: (value: IImage[]) => {
+            dispatch(setImages(value))
         }
     }
+}
+
+const useAmbient = () => {  
+    const [play, {stop}] = useSound(ambient, 
+        {
+            volume: 0.7
+        })
+
+    const playAmbient = () => {
+        play()
+    }
+
+    const stopAmbient = () => {
+        stop()
+    }
+
+    return { playAmbient, stopAmbient }
 }
 
 const useBtn = () => {  
     const [play] = useSound(btn, 
         {
-            volume: 0.7
+            volume: 0.5
         })
 
     const playBtn = () => {
@@ -69,6 +91,7 @@ export const useAudio = () => {
     const {playBtn} = useBtn()
     const {playWooh} = useWooh()
     const {playWoohv2} = useWoohV2()
+    const {playAmbient, stopAmbient} = useAmbient()
 
-    return { playBtn, playWooh, playWoohv2 }
+    return { playBtn, playWooh, playWoohv2, playAmbient, stopAmbient }
 }

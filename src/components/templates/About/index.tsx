@@ -4,8 +4,9 @@ import Title from '../../atoms/Title/Title'
 import TextPage from '../../molecules/TextPage'
 import Mars from '../../organisms/Planets/Mars/Mars'
 import { Socials } from '../../atoms/Socials/Socials'
+import { memo } from 'react'
 
-const AboutTemplate = () => {
+const AboutTemplate = memo(() => {
 
     const { about, sound } = useAppSelector(state => state.main)
 
@@ -39,6 +40,6 @@ const AboutTemplate = () => {
             </>}
         </div>
     )
-}
+})
 
 export default AboutTemplate

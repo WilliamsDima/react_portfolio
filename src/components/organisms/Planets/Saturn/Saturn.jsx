@@ -1,15 +1,12 @@
-import React, {useContext} from 'react';
-import styles from './Saturn.module.scss';
-import { AppContext } from '../../../context/context';
+import React from 'react'
+import styles from './Saturn.module.scss'
 
 
 export const Saturn = (props) => {
 
-    const { setIndex } = useContext(AppContext);
-
     return (
 
-        <div className={styles['planet-wrap']} onClick={() => setIndex(3)}>
+        <div className={styles['planet-wrap']}>
 
             <div className={styles["saturn"]}>
                 <div className={styles["planet"]}>

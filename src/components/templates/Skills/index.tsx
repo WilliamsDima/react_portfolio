@@ -3,8 +3,9 @@ import { useAppSelector, useAudio } from '../../../hooks/hooks'
 import Title from '../../atoms/Title/Title'
 import TextPage from '../../molecules/TextPage'
 import Jupiter from '../../organisms/Planets/Jupiter/Jupiter'
+import { memo } from 'react'
 
-const SkillsTemplate = () => {
+const SkillsTemplate = memo(() => {
 
     const { skills, sound } = useAppSelector(state => state.main)
 
@@ -36,6 +37,6 @@ const SkillsTemplate = () => {
             </>}
         </div>
     )
-}
+})
 
 export default SkillsTemplate

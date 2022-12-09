@@ -10,6 +10,7 @@ const initialState: IStore = {
     works: null,
     skipIntro: false,
     sound: false,
+    images: null
 }
 
 const mainSlice = createSlice({
@@ -24,4 +25,4 @@ export const mainReducer = (state = initialState, action: any) => {
     return mainSlice.reducer(state, action);
 };
 
-export const { setData, setSkip, setSound } = mainSlice.actions;
+export const { setData, setSkip, setSound, setImages } = mainSlice.actions;
