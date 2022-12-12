@@ -20,4 +20,10 @@ export const mainActions: MainActions = {
     setImages: (state, { payload }) => {
         state.images = payload
     },
+    setWork: (state, { payload }) => {
+        state.work = payload
+    },
+    setForm: (state, { payload }) => {
+        state.formModal = payload
+    },
 }

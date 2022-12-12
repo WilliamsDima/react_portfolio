@@ -1,0 +1,50 @@
+@import '../../../assets/styles/colors.scss';
+
+.modal {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba($color: $black, $alpha: 0.9);
+    position: relative;
+    z-index: 1000;
+
+    svg {
+        width: 75px;
+        margin-top: -300px;
+        margin-right: -80px;
+
+        @media screen and (max-width: 1050px) {
+            width: 20px;
+            margin: 0;
+            margin-right: -37px;
+        }  
+        
+        path {
+            color: #08FDD8;
+        }
+    }
+
+
+    img {
+        transform: scale(.5);
+        position: relative;
+    }
+
+    div {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .text {
+        position: absolute;
+        bottom: 20%;
+        left: 50%;
+        font-size: 18px;
+        transform: translateX(-50%);
+        color: $main;
+    }
+}

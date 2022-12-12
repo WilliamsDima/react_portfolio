@@ -1,12 +1,12 @@
 import { TypedUseSelectorHook, useDispatch, useSelector } from 'react-redux'
 import useSound from 'use-sound'
 import type { RootState, AppDispatch } from '../store/index'
-import { setData, setImages, setSkip, setSound } from '../store/redusers/main/main'
+import { setData, setForm, setImages, setSkip, setSound, setWork } from '../store/redusers/main/main'
 import btn from '../assets/audio/btn.mp3'
 import wooh from '../assets/audio/wooh.mp3'
 import woohv2 from '../assets/audio/woohv2.mp3'
 import ambient from '../assets/audio/ambient.mp3'
-import { IImage } from '../store/redusers/main/types'
+import { IImage, IWorks } from '../store/redusers/main/types'
 
 export const useAppDispatch: () => AppDispatch = useDispatch
 export const useAppSelector: TypedUseSelectorHook<RootState> = useSelector
@@ -26,7 +26,13 @@ export const useActions = () => {
         },
         setImages: (value: IImage[]) => {
             dispatch(setImages(value))
-        }
+        },
+        setWork: (value: any) => {
+            dispatch(setWork(value))
+        },
+        setForm: (value: boolean) => {
+            dispatch(setForm(value))
+        },
     }
 }
 

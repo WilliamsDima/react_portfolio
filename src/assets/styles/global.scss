@@ -34,6 +34,15 @@
         z-index: 5;
         padding: 0 1rem;
         margin-left: 7rem;
+
+        @media screen and (max-width: 1050px) {
+            display: block;
+            overflow-y: scroll;
+            overflow-x: hidden;
+            height: 100vh;
+            width: 100%;
+            // margin-bottom: 7rem;
+        }
     }
 }
 

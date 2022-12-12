@@ -10,6 +10,14 @@
     align-items: flex-start;
 
     @media screen and (max-width: 1050px) {
+        overflow-y: scroll;
+        overflow-x: hidden;
+        height: 100vh;
+        width: 100%;
+        // margin-bottom: 7rem;
+    }
+
+    @media screen and (max-width: 1050px) {
         justify-content: center;
         align-items: center;
         margin: 0;

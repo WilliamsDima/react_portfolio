@@ -13,7 +13,6 @@ type Modal = {
 const Modal: FC<Modal> = memo(({children, close, visible}) => {
 
     const closeHandler = (e: MouseEvent) => {
-        e.stopPropagation()
         close()
     }
    

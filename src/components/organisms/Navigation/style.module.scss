@@ -6,10 +6,18 @@
     right: 0;
     z-index: 10;
     padding: 3rem 5rem;
+    padding-top: 0;
     width: 100%;
     display: flex;
     justify-content: end;
     align-items: center;
+
+    @media screen and (max-width: 1070px) {
+        bottom: initial;
+        top: 0;
+        padding-top: 3rem;
+        padding-bottom: 0;
+    }
 
     @extend %showText;
 

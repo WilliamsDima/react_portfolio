@@ -1,11 +1,12 @@
 import styles from './style.module.scss'
-import { useAppSelector } from '../../../hooks/hooks'
+import { useActions, useAppSelector } from '../../../hooks/hooks'
 import { memo } from 'react'
 import { Saturn } from '../../organisms/Planets/Saturn/Saturn'
 import WorksList from '../../organisms/WorksList'
 
 const WorksTemplate = memo(() => {
 
+    const { setWork } = useActions()
     const { works, images } = useAppSelector(state => state.main)
 
     return (
@@ -14,7 +15,7 @@ const WorksTemplate = memo(() => {
             {works && images && <>
 
                 <div className={styles.pageContent}>
-                    <WorksList works={works} images={images}/>
+                    <WorksList setModal={setWork} works={works} images={images}/>
                 </div>
 
                 <Saturn />

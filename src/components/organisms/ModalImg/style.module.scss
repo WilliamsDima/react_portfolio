@@ -1,0 +1,37 @@
+@import '../../../assets/styles/colors.scss';
+
+.carusel {
+    width: 88vw;
+    height: 78vh;
+    margin-top: -15rem;
+
+    dd {
+        display: none;
+        height: auto;
+        background-color: transparent;
+        transition: initial;
+        transform: none;
+        font-size: 18px;
+        margin-bottom: 2rem;
+    }
+
+    @media screen and (max-width: 1070px) {
+        margin: 0;
+        height: 66vh;
+        dd {
+            display: flex;
+        }
+    }
+
+    .img {
+        background-repeat: no-repeat;
+        background-size: contain;
+        height: 77.5vh;
+        background-position: center;
+        transition: all .4s cubic-bezier(0.645, 0.045, 0.355, 1);
+
+        @media screen and (max-width: 1070px) {
+            height: 50vh;
+        }
+    }
+}

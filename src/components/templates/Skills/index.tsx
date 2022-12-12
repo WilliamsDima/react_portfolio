@@ -1,5 +1,5 @@
 import styles from './style.module.scss'
-import { useAppSelector, useAudio } from '../../../hooks/hooks'
+import { useActions, useAppSelector, useAudio } from '../../../hooks/hooks'
 import Title from '../../atoms/Title/Title'
 import TextPage from '../../molecules/TextPage'
 import Jupiter from '../../organisms/Planets/Jupiter/Jupiter'
@@ -7,6 +7,7 @@ import { memo } from 'react'
 
 const SkillsTemplate = memo(() => {
 
+    const {setForm} = useActions()
     const { skills, sound } = useAppSelector(state => state.main)
 
     const titleText: string[] | undefined = skills?.title.split('')
@@ -14,6 +15,7 @@ const SkillsTemplate = memo(() => {
     const { playBtn, playWoohv2 } = useAudio()
 
     const modalHandler = () => {
+        setForm(true)
         sound && playBtn()
         sound && playWoohv2()
     }

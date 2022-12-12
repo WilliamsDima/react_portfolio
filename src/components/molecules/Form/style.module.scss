@@ -1,0 +1,112 @@
+.formWrapp {
+    width: 100vw;
+    justify-content: center;
+    display: flex;
+    align-items: center;
+
+        
+    .form {
+        width: 50%;
+        margin-top: 2rem;
+        display: grid;
+        grid-template-areas: 
+        'n m'
+        't t';
+        grid-template-rows: 1fr;
+        grid-template-columns: 1fr 1fr;
+        grid-gap: 2rem;
+
+    
+        @media screen and (max-width: 1050px) {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            overflow-x: hidden;
+            padding-bottom: 3rem;
+        }  
+        
+        input, textarea {
+            background-color: #292929;
+            border: none;
+            color: #08FDD8;
+            padding: 4px;
+
+            &:focus {
+                outline: 0;
+            }
+            
+            &:focus + .line {
+                width: 100%;
+                
+            }
+        }
+
+        input {
+            width: 100%;
+            height: 4rem;
+        }
+        
+                    
+        .line {
+            width: 0%;
+            height: 1px;
+
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            transition: width .2s linear;
+
+            background-color: #08FDD8;
+        }
+        
+        
+        
+        .block__name {
+            position: relative;
+            grid-area: n;
+
+            @media screen and (max-width: 1050px) {
+                width: 100%;
+                display: block;
+            }
+        }
+        
+        .block__email {
+            position: relative;
+            grid-area: m;
+
+            @media screen and (max-width: 1050px) {
+                width: 100%;
+                display: block;
+            }
+        }
+        
+        .block__message {
+            width: 100%;
+            grid-area: t;
+            position: relative;
+            
+            textarea {
+                width: 100%;
+            
+                min-height: 50px;
+                max-height: 150px;
+            }
+        }
+        
+            
+            .btn-form {
+                width: 20rem;
+                color: #000;
+                background-color: #08FDD8;
+                border: none;
+                padding: 1rem 2rem;
+                transition: all .2s linear;
+                
+                &:hover {
+                    background-color: darken(#08FDD8, 10%);
+                }
+            }
+    }
+}

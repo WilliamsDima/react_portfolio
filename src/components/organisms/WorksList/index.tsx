@@ -6,23 +6,24 @@ import styles from './style.module.scss'
 type WorksList = {
     works: IWorks[]
     images: IImage[]
+    setModal: (work: IWorks) => void
 }
 
 
-const WorksList: FC<WorksList> = memo(({works, images}) => {
+const WorksList: FC<WorksList> = memo(({works, images, setModal}) => {
 
-    console.log('images...', images);
-    console.log('works', works);
-    
+    const sortByDateWorks = works && [...works].sort((a, b) => {
+        return +b.date.toDate() - +a.date.toDate()
+    })
    
     return (
-        <div className={styles.works}>
-            {works.map((work, i) => {
+        <ul className={styles.works}>
+            {sortByDateWorks.map((work, i) => {
                 const img = images.find((it) => it.id === work.id)
                 
-                return <WorkItem work={work} key={i} img={img}/>
+                return <WorkItem setModal={setModal} work={work} key={i} img={img}/>
             })}
-        </div>
+        </ul>
     )
 })
 

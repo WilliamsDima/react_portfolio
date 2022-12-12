@@ -1,7 +1,7 @@
 import { initializeApp } from "firebase/app"
 import { getDownloadURL, getStorage, listAll, ref } from "firebase/storage"
 import { getFirestore, doc, getDoc } from "firebase/firestore/lite"
-import { IImage, IWorks } from "../store/redusers/main/types"
+import { IWorks } from "../store/redusers/main/types"
 
 const firebaseConfig = {
     apiKey: process.env.REACT_APP_FIREBASE_API_KEY,

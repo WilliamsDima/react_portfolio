@@ -32,7 +32,7 @@ export interface ISkills {
 
 export interface IWorks {
     id: number
-    date: Date
+    date: any
     name: string
     folder: string
     link: string
@@ -56,4 +56,6 @@ export interface IStore {
     skipIntro: boolean
     sound: boolean
     images: IImage[] | null
+    work: any
+    formModal: boolean
 }

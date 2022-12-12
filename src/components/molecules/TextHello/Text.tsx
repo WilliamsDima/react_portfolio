@@ -1,16 +1,18 @@
 import { FC } from 'react';
-import { useAppSelector, useAudio } from '../../../hooks/hooks';
+import { useActions, useAppSelector, useAudio } from '../../../hooks/hooks';
 import Title from '../../atoms/Title/Title';
 import styles from './Text.module.scss'
 
 const TextHello: FC = (props) => {
 
+    const {setForm} = useActions()
     const { main, sound } = useAppSelector(state => state.main)
     const {playBtn, playWoohv2} = useAudio()
 
     const titleText: string[] | undefined = main?.text.split('')
 
     const openModal = () => {
+        setForm(true)
         sound && playBtn()
         sound && playWoohv2()
     }

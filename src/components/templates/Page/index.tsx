@@ -1,8 +1,12 @@
-import React, {FC, ReactNode, useEffect} from 'react'
+import React, {FC, ReactNode, useEffect, useState} from 'react'
 import { getData, getImagesWorks } from '../../../api/firebase'
 import { useActions, useAppSelector } from '../../../hooks/hooks'
 import { Circles } from '../../atoms/Circles/Circles'
 import Loader from '../../atoms/Loader'
+import ThanksModal from '../../atoms/ThanksModal/ThanksModal'
+import MySendForm from '../../molecules/Form/MySendForm'
+import Modal from '../../organisms/Modal'
+import ModalImg from '../../organisms/ModalImg'
 import Navigation from '../../organisms/Navigation'
 import Stars from '../../organisms/StarsBG'
 import styles from './style.module.scss'
@@ -13,9 +17,10 @@ type Page = {
 
 const Page: FC<Page> = ({children}) => {
 
-    const { setData, setImages } = useActions()
-    const { data, skipIntro, works, images } = useAppSelector(store => store.main)
-    
+    const { setData, setImages, setWork, setForm } = useActions()
+    const { data, skipIntro, works, images, work, formModal } = useAppSelector(store => store.main)
+    const [thanksModal, setThanksModal] = useState(false)
+
     const setDataHandler = async () => {
         const res = await getData()
 
@@ -33,8 +38,7 @@ const Page: FC<Page> = ({children}) => {
 
     useEffect(() => {
 
-        console.log('page render...', images);
-        
+        console.log('page render...');
         
         if (!data) {
             setDataHandler()
@@ -57,6 +61,18 @@ const Page: FC<Page> = ({children}) => {
             
             {(skipIntro || sessionStorage.getItem('skip-intro')) && 
                 <>
+                    <Modal visible={!!work} close={() => setWork(false)}>
+                        {images && work && <ModalImg images={images} work={work}/>}
+                    </Modal>
+
+                    <Modal visible={formModal} close={() => setForm(false)}>
+                        <MySendForm close={() => setForm(false)} setThanksModal={() => setThanksModal(true)}/>
+                    </Modal>
+
+                    <Modal visible={thanksModal} close={() => setThanksModal(false)}>
+                        <ThanksModal close={() => setThanksModal(false)}/>
+                    </Modal>
+
                     <Navigation />
                     <Circles />
                     <div className={styles.textTop}>

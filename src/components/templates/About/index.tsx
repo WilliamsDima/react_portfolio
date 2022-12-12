@@ -1,5 +1,5 @@
 import styles from './style.module.scss'
-import { useAppSelector, useAudio } from '../../../hooks/hooks'
+import { useActions, useAppSelector, useAudio } from '../../../hooks/hooks'
 import Title from '../../atoms/Title/Title'
 import TextPage from '../../molecules/TextPage'
 import Mars from '../../organisms/Planets/Mars/Mars'
@@ -8,11 +8,13 @@ import { memo } from 'react'
 
 const AboutTemplate = memo(() => {
 
+    const {setForm} = useActions()
     const { about, sound } = useAppSelector(state => state.main)
 
     const { playBtn, playWoohv2 } = useAudio()
 
     const modalHandler = () => {
+        setForm(true)
         sound && playBtn()
         sound && playWoohv2()
     }

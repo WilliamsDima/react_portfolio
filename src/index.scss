@@ -18,7 +18,10 @@ body {
   overflow-y: hidden;
   overflow-x: hidden;
   position: fixed;
-  width: 100vw;
-  height: 100vh;
+
+  @media screen and (max-width: 1050px) {
+    overflow-y: scroll;
+    overflow-x: hidden;
+  }
 }
 
