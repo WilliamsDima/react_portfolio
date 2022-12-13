@@ -38,7 +38,7 @@ const Page: FC<Page> = ({children}) => {
 
     useEffect(() => {
 
-        console.log('page render...');
+        // console.log('page render...');
         
         if (!data) {
             setDataHandler()

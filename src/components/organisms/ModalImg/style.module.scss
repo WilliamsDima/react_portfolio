@@ -16,8 +16,7 @@
     }
 
     @media screen and (max-width: 1070px) {
-        margin: 0;
-        height: 66vh;
+        height: initial;
         dd {
             display: flex;
         }
