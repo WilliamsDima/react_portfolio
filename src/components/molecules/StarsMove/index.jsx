@@ -33,7 +33,7 @@ const StarsMove = ({speed = 2, start = false}) => {
             this.move = function() {
                 this.z -= boostSpeed;
 
-                if (start) {
+                if (start && /Windows/.test(navigator.userAgent)) {
                     boostSpeed += 0.0001
                     boostCount += 1
                 }

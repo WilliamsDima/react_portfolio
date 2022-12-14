@@ -26,4 +26,7 @@ export const mainActions: MainActions = {
     setForm: (state, { payload }) => {
         state.formModal = payload
     },
+    setStartIntro: (state, { payload }) => {
+        state.startIntro = payload
+    },
 }

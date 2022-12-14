@@ -8,6 +8,37 @@
     align-items: center;
     flex-direction: column;
 
+    .wrapper {
+        display: none;
+        height: 100vh;
+        width: 100vw;
+
+        &.skip {
+            display: block;
+        }
+    
+        &.start {
+            display: block;
+            animation-name: showMain;
+            animation-duration: 2s;
+            animation-timing-function: ease-out;
+            animation-iteration-count: 1;
+            animation-delay: 27s;
+            animation-fill-mode: forwards;
+            opacity: 0;
+            
+            
+            @keyframes showMain {
+                0% {
+                    opacity: 0;    
+                }
+                100% {
+                    opacity: 1;  
+                }
+            }
+        }
+    }
+
     .textTop {
         position: absolute;
         top: 0;
@@ -41,7 +72,7 @@
     }
 
     .content {
-        position: relative;
+        position: absolute;
         z-index: 5;
         opacity: 0;
         visibility: visible;

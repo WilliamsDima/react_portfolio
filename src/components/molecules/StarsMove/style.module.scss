@@ -10,6 +10,7 @@
     animation-delay: 15s;
     animation-fill-mode: forwards;
     opacity: 1;
+    visibility: visible;
     
 
       @keyframes hiddenStars {
@@ -22,7 +23,8 @@
           }
 
           100% {
-            opacity: 0;  
+            opacity: 0;
+            visibility: hidden;
           }
       }
 }

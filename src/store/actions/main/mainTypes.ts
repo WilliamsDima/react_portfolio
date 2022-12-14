@@ -8,4 +8,5 @@ export type MainActions = {
     setImages: (state: IStore, payload: PayloadAction<IImage[]>) => void
     setWork: (state: IStore, payload: PayloadAction<any>) => void
     setForm: (state: IStore, payload: PayloadAction<boolean>) => void
+    setStartIntro: (state: IStore, payload: PayloadAction<boolean>) => void
 }

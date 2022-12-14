@@ -6,6 +6,11 @@
     animation-delay: 15s;
     animation-fill-mode: forwards;
     background-color: rgba($color: #fff, $alpha: 0);  
+    visibility: visible;
+
+    position: absolute;
+    top: 0;
+    left: 0;
 
     .skip {
       position: absolute;
@@ -33,6 +38,7 @@
             }
             100% {
                 opacity: 0;  
+                visibility: hidden;
             }
         }
     }
@@ -49,6 +55,7 @@
 
           100% {
             background-color: rgba($color: #fff, $alpha: 0);  
+            visibility: hidden;
           }
       }
 }

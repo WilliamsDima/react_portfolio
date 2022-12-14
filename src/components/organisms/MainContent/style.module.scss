@@ -1,11 +1,31 @@
-.content {
-    width: 100vw;
-    height: 100vh;
-    position: relative;
+@import '../../../assets/styles/global.scss';
 
-    margin-left: 7rem;
+.mainContent {
 
-    @media screen and (max-width: 1050px) {
-        margin: 0;
+    display: none;
+
+    &.skip {
+        display: block;
+    }
+
+    &.start {
+        display: block;
+        animation-name: showMain;
+        animation-duration: 2s;
+        animation-timing-function: ease-out;
+        animation-iteration-count: 1;
+        animation-delay: 27s;
+        animation-fill-mode: forwards;
+        opacity: 0;
+        
+        
+        @keyframes showMain {
+            0% {
+                opacity: 0;    
+            }
+            100% {
+                opacity: 1;  
+            }
+        }
     }
 }

@@ -1,7 +1,7 @@
 import { TypedUseSelectorHook, useDispatch, useSelector } from 'react-redux'
 import useSound from 'use-sound'
 import type { RootState, AppDispatch } from '../store/index'
-import { setData, setForm, setImages, setSkip, setSound, setWork } from '../store/redusers/main/main'
+import { setData, setForm, setImages, setSkip, setSound, setStartIntro, setWork } from '../store/redusers/main/main'
 import btn from '../assets/audio/btn.mp3'
 import wooh from '../assets/audio/wooh.mp3'
 import woohv2 from '../assets/audio/woohv2.mp3'
@@ -16,15 +16,20 @@ export const useActions = () => {
 
     return {
         setData: (data: any) => {
+            sessionStorage.setItem('data', JSON.stringify(data))
             dispatch(setData(data))
         },
         setSkip: (value: boolean) => {
             dispatch(setSkip(value))
         },
+        setStartIntro: (value: boolean) => {
+            dispatch(setStartIntro(value))
+        },
         setSound: (value: boolean) => {
             dispatch(setSound(value))
         },
         setImages: (value: IImage[]) => {
+            sessionStorage.setItem('images', JSON.stringify(value))
             dispatch(setImages(value))
         },
         setWork: (value: any) => {
@@ -33,6 +38,7 @@ export const useActions = () => {
         setForm: (value: boolean) => {
             dispatch(setForm(value))
         },
+
     }
 }
 

@@ -1,9 +1,12 @@
 import react, { memo } from 'react'
 import styles from './style.module.scss'
 import CSS from 'csstype'
+import { useAppSelector } from '../../../hooks/hooks'
 
 
 const Stars = memo((props) => {
+
+    const { skipIntro } = useAppSelector(store => store.main)
 
     const limit = 500
 
@@ -24,13 +27,16 @@ const Stars = memo((props) => {
         return style
     }
 
+    const skip = skipIntro || sessionStorage.getItem('skip-intro')
+
     return (
         <>
-            <div className={styles.space}>
+            {skip && <div className={styles.space}>
                 {filledArray.map((it, i) => {
                     return <div className={styles.star} key={i} style={createStar()}></div> 
                 })}
-            </div>
+            </div>}
+
             <div className={styles.scy}>
                 <div className={styles.stars}></div>
                 <div className={styles.twinkling}></div>

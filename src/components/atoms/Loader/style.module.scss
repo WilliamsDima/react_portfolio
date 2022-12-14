@@ -13,6 +13,10 @@
     visibility: hidden;
     transition: all .2s linear;
 
+    &:focus-visible {
+        outline: 0;
+    }
+
     &.pulse {
         border-radius: 50%;
 

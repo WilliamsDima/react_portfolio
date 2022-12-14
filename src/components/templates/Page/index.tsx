@@ -1,3 +1,4 @@
+import cn from 'classnames'
 import React, {FC, ReactNode, useEffect, useState} from 'react'
 import { getData, getImagesWorks } from '../../../api/firebase'
 import { useActions, useAppSelector } from '../../../hooks/hooks'
@@ -17,8 +18,8 @@ type Page = {
 
 const Page: FC<Page> = ({children}) => {
 
-    const { setData, setImages, setWork, setForm } = useActions()
-    const { data, skipIntro, works, images, work, formModal } = useAppSelector(store => store.main)
+    const { setData, setImages, setWork, setForm, setSkip } = useActions()
+    const { data, skipIntro, works, images, work, formModal, startIntro } = useAppSelector(store => store.main)
     const [thanksModal, setThanksModal] = useState(false)
 
     const setDataHandler = async () => {
@@ -36,51 +37,69 @@ const Page: FC<Page> = ({children}) => {
         })
     }
 
+    const skipHandler = () => {
+        // console.log(222, skipIntro);
+        
+        if (!skipIntro) {
+            setSkip(true)
+            sessionStorage.setItem('skip-intro', 'true')
+        }
+
+    }
+
+    const dataLocal = sessionStorage.getItem('data') && JSON.parse(sessionStorage.getItem('data') || '{}')
+    const imagesLocal = sessionStorage.getItem('images') && JSON.parse(sessionStorage.getItem('images') || '{}')
+
     useEffect(() => {
 
         // console.log('page render...');
         
-        if (!data) {
+        if (!data && !sessionStorage.getItem('data') && !dataLocal) {
             setDataHandler()
+        } else if (!data && dataLocal) {
+            setData(dataLocal)
         }
 
-        if (works && !images) {
+        if (works && !images && !sessionStorage.getItem('images')) {
             getImages()
+        } else if (!images && imagesLocal) {
+            setImages(imagesLocal)
         }
         
     }, [data, images])
 
     return (
         <div className={styles.page}>
-            <section className={styles.content}>
+            <section className={styles.content} onClick={skipHandler}>
                 {children}
             </section>
 
             <Loader active={!data && !images} />
             <Stars />
-            
-            {(skipIntro || sessionStorage.getItem('skip-intro')) && 
-                <>
-                    <Modal visible={!!work} close={() => setWork(false)}>
-                        {images && work && <ModalImg images={images} work={work}/>}
-                    </Modal>
 
-                    <Modal visible={formModal} close={() => setForm(false)}>
-                        <MySendForm close={() => setForm(false)} setThanksModal={() => setThanksModal(true)}/>
-                    </Modal>
+            <div className={cn(styles.wrapper, {
+                [styles.start]: startIntro && !sessionStorage.getItem('skip-intro'),
+                [styles.skip]: sessionStorage.getItem('skip-intro')
+            })}>
+                <Modal visible={!!work} close={() => setWork(false)}>
+                    {images && work && <ModalImg images={images} work={work}/>}
+                </Modal>
 
-                    <Modal visible={thanksModal} close={() => setThanksModal(false)}>
-                        <ThanksModal close={() => setThanksModal(false)}/>
-                    </Modal>
+                <Modal visible={formModal} close={() => setForm(false)}>
+                    <MySendForm close={() => setForm(false)} setThanksModal={() => setThanksModal(true)}/>
+                </Modal>
 
-                    <Navigation />
-                    <Circles />
-                    <div className={styles.textTop}>
-                        <p>&lt;sorry I <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="heart" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M462.3 62.6C407.5 15.9 326 24.3 275.7 76.2L256 96.5l-19.7-20.3C186.1 24.3 104.5 15.9 49.7 62.6c-62.8 53.6-66.1 149.8-9.9 207.9l193.5 199.8c12.5 12.9 32.8 12.9 45.3 0l193.5-199.8c56.3-58.1 53-154.3-9.8-207.9z"></path></svg> space&gt;</p>
-                        <p>&lt;you get what you give you&gt;</p>
-                    </div>
-                </>
-            }
+                <Modal visible={thanksModal} close={() => setThanksModal(false)}>
+                    <ThanksModal close={() => setThanksModal(false)}/>
+                </Modal>
+
+                <Navigation />
+                <Circles />
+                <div className={styles.textTop}>
+                    <p>&lt;sorry I <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="heart" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M462.3 62.6C407.5 15.9 326 24.3 275.7 76.2L256 96.5l-19.7-20.3C186.1 24.3 104.5 15.9 49.7 62.6c-62.8 53.6-66.1 149.8-9.9 207.9l193.5 199.8c12.5 12.9 32.8 12.9 45.3 0l193.5-199.8c56.3-58.1 53-154.3-9.8-207.9z"></path></svg> space&gt;</p>
+                    <p>&lt;you get what you give you&gt;</p>
+                </div>
+            </div>
         </div>
     )
 }

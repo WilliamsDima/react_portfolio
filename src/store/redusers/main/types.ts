@@ -54,6 +54,7 @@ export interface IStore {
     skills: ISkills | null
     works: IWorks[] | null
     skipIntro: boolean
+    startIntro: boolean
     sound: boolean
     images: IImage[] | null
     work: any
