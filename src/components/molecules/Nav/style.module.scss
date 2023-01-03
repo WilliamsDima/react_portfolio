@@ -2,8 +2,8 @@
 
 .nav {
 	display: flex;
-	justify-content: end;
-	align-items: end;
+	justify-content: flex-end;
+	align-items: flex-end;
 	flex-direction: column;
 
 	position: absolute;
@@ -13,7 +13,7 @@
 	height: 100vh;
 
 	@media screen and (max-width: 1070px) {
-		align-items: end;
+		align-items: flex-end;
 		bottom: initial;
 		top: 0;
 		transform: translateX(100vw);
@@ -39,7 +39,7 @@
 	.container {
 		display: flex;
 		justify-content: center;
-		align-items: end;
+		align-items: flex-end;
 		flex-direction: column;
 		padding: 2rem 0;
 		margin-bottom: 7rem;
@@ -58,7 +58,7 @@
 		font-size: 20px;
 		display: flex;
 		align-items: center;
-		justify-content: end;
+		justify-content: flex-end;
 		position: relative;
 		text-align: center;
 		width: 100%;

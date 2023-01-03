@@ -1,54 +1,54 @@
-@import '../../../assets/styles/global.scss';
+@import "../../../assets/styles/global.scss";
 
 .nav {
-    position: absolute;
-    bottom: 0;
-    right: 0;
-    z-index: 10;
-    padding: 3rem 5rem;
-    padding-top: 0;
-    width: 100%;
-    display: flex;
-    justify-content: end;
-    align-items: center;
+	position: absolute;
+	bottom: 0;
+	right: 0;
+	z-index: 10;
+	padding: 3rem 5rem;
+	padding-top: 0;
+	width: 100%;
+	display: flex;
+	justify-content: flex-end;
+	align-items: center;
 
-    @media screen and (max-width: 1070px) {
-        bottom: initial;
-        top: 0;
-        padding-top: 3rem;
-        padding-bottom: 0;
-    }
+	@media screen and (max-width: 1070px) {
+		bottom: initial;
+		top: 0;
+		padding-top: 3rem;
+		padding-bottom: 0;
+	}
 
-    @extend %showText;
+	@extend %showText;
 
-    .sound {
-        margin-right: 4rem;
-        position: relative;
+	.sound {
+		margin-right: 4rem;
+		position: relative;
 
-        &.off {
-            &::after, &::before {
-                content: '';
-                position: absolute;
-                width: 100%;
-                height: 2px;
-                background-color: red;
-                top: 50%;
-                left: 0;
-                transform: translate(-50%);
-            }
+		&.off {
+			&::after,
+			&::before {
+				content: "";
+				position: absolute;
+				width: 100%;
+				height: 2px;
+				background-color: red;
+				top: 50%;
+				left: 0;
+				transform: translate(-50%);
+			}
 
-            &::after {
-                transform: rotate(-45deg);
-            }
+			&::after {
+				transform: rotate(-45deg);
+			}
 
-            &::before {
-                transform: rotate(45deg);
-            }
+			&::before {
+				transform: rotate(45deg);
+			}
+		}
+	}
 
-        }
-    }
-
-    .atom {
-        transform: scale(0.2);
-    }
+	.atom {
+		transform: scale(0.2);
+	}
 }
