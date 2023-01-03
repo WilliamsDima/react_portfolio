@@ -1,67 +1,66 @@
 %showText {
-    animation-name: showText;
-    animation-duration: 2s;
-    animation-timing-function: ease-out;
-    animation-iteration-count: 1;
-    animation-delay: 0.5s;
-    animation-fill-mode: forwards;
-    opacity: 0;
-    
-    
-    @keyframes showText {
-        0% {
-            opacity: 0;    
-        }
-        100% {
-            opacity: 1;  
-        }
-    }
+	animation-name: showText;
+	animation-duration: 2s;
+	animation-timing-function: ease-out;
+	animation-iteration-count: 1;
+	animation-delay: 0.5s;
+	animation-fill-mode: forwards;
+	opacity: 0;
+
+	@keyframes showText {
+		0% {
+			opacity: 0;
+		}
+		100% {
+			opacity: 1;
+		}
+	}
 }
 
 %pageContent {
-    width: 50%;
+	width: 50%;
 
-    @media screen and (max-width: 1050px) {
-        width: 100%;
-    }
+	@media screen and (max-width: 1050px) {
+		width: 100%;
+	}
 
-    .pageContent {
-        display: flex;
-        justify-content: center;
-        flex-direction: column;
-        align-items: flex-start;
-        position: relative;
-        z-index: 5;
-        padding: 0 1rem;
-        margin-left: 7rem;
+	.pageContent {
+		display: flex;
+		justify-content: center;
+		flex-direction: column;
+		align-items: start;
+		position: relative;
+		z-index: 5;
+		padding: 0 1rem;
+		margin-left: 7rem;
 
-        @media screen and (max-width: 1050px) {
-            display: block;
-            overflow-y: scroll;
-            overflow-x: hidden;
-            height: 100vh;
-            width: 100%;
-            // margin-bottom: 7rem;
-        }
-    }
+		@media screen and (max-width: 1050px) {
+			display: block;
+			overflow-y: scroll;
+			overflow-x: hidden;
+			height: 100vh;
+			width: 100%;
+			// margin-bottom: 7rem;
+		}
+	}
 }
 
 %introAnim {
-    animation-name: showIntoText;
-    animation-timing-function: ease-out;
-    animation-iteration-count: 1;
-    animation-fill-mode: forwards;
+	animation-name: showIntoText;
+	animation-timing-function: ease-out;
+	animation-iteration-count: 1;
+	animation-fill-mode: forwards;
 
-    @keyframes showIntoText {
-        0% {
-            opacity: 0;    
-        }
+	@keyframes showIntoText {
+		0% {
+			opacity: 0;
+		}
 
-        50% {
-            opacity: 1;    
-        }
-        100% {
-            opacity: 0;  
-        }
-    }
+		50% {
+			opacity: 1;
+		}
+		100% {
+			opacity: 0;
+		}
+	}
 }
