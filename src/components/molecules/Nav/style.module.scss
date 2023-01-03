@@ -1,109 +1,108 @@
-@import '../../../assets/styles/colors.scss';
+@import "../../../assets/styles/colors.scss";
 
 .nav {
-    display: flex;
-    justify-content: flex-end;
-    align-items: end;
-    flex-direction: column;
+	display: flex;
+	justify-content: end;
+	align-items: end;
+	flex-direction: column;
 
-    position: absolute;
-    bottom: 0;
-    right: 0rem;
-    width: 100vw;
-    height: 100vh;
+	position: absolute;
+	bottom: 0;
+	right: 0rem;
+	width: 100vw;
+	height: 100vh;
 
-    @media screen and (max-width: 1070px) {
-        align-items: end;
-        bottom: initial;
-        top: 0;
-        transform: translateX(100vw);
-        padding: 0;
+	@media screen and (max-width: 1070px) {
+		align-items: end;
+		bottom: initial;
+		top: 0;
+		transform: translateX(100vw);
+		padding: 0;
 
-        .container {
-            margin: 0;
-            padding: 0;
-            align-items: center;
-            height: 100%;
-            width: 45%;
-            background-color: rgba($color: #000000, $alpha: 0.8);
-        }
+		.container {
+			margin: 0;
+			padding: 0;
+			align-items: center;
+			height: 100%;
+			width: 45%;
+			background-color: rgba($color: #000000, $alpha: 0.8);
+		}
 
-        &.active {
-            transform: translateX(0);
-        }
-    }
+		&.active {
+			transform: translateX(0);
+		}
+	}
 
-    transform: translateX(100vw);
-    transition: all .8s cubic-bezier(0.075, 0.82, 0.165, 1);
+	transform: translateX(100vw);
+	transition: all 0.8s cubic-bezier(0.075, 0.82, 0.165, 1);
 
-    .container {
-        display: flex;
-        justify-content: center;
-        align-items: end;
-        flex-direction: column;
-        padding: 2rem 0;
-        margin-bottom: 7rem;
+	.container {
+		display: flex;
+		justify-content: center;
+		align-items: end;
+		flex-direction: column;
+		padding: 2rem 0;
+		margin-bottom: 7rem;
 
-        @media screen and (max-width: 1070px) {
-            margin: 0;
-        }
-    }
+		@media screen and (max-width: 1070px) {
+			margin: 0;
+		}
+	}
 
-    &.active {
-        transform: translateX(0);
-    }
+	&.active {
+		transform: translateX(0);
+	}
 
-    
-    a {
-        margin-bottom: 1rem;
-        font-size: 20px;
-        display: flex;
-        align-items: center;
-        justify-content: flex-end;
-        position: relative;
-        text-align: center;
-        width: 100%;
-        padding: 0 2rem;
-        transition: all .2s cubic-bezier(0.215, 0.610, 0.355, 1);
+	a {
+		margin-bottom: 1rem;
+		font-size: 20px;
+		display: flex;
+		align-items: center;
+		justify-content: end;
+		position: relative;
+		text-align: center;
+		width: 100%;
+		padding: 0 2rem;
+		transition: all 0.2s cubic-bezier(0.215, 0.61, 0.355, 1);
 
-        @media screen and (max-width: 550px) {
-            justify-content: center;
-        }
+		@media screen and (max-width: 550px) {
+			justify-content: center;
+		}
 
-        svg {
-            fill: $white;
-        }
+		svg {
+			fill: $white;
+		}
 
-        svg {
-            position: absolute;
-            top: 50%;
-            right: 0;
-            transform:  translateY(-50%) translateX(5rem);
-            transition: all .2s cubic-bezier(0.215, 0.610, 0.355, 1);
+		svg {
+			position: absolute;
+			top: 50%;
+			right: 0;
+			transform: translateY(-50%) translateX(5rem);
+			transition: all 0.2s cubic-bezier(0.215, 0.61, 0.355, 1);
 
-            @media screen and (max-width: 550px) {
-                display: none;
-            }
-        }
+			@media screen and (max-width: 550px) {
+				display: none;
+			}
+		}
 
-        &:hover {
-            transform:  translateX(-4rem);
+		&:hover {
+			transform: translateX(-4rem);
 
-            @media screen and (max-width: 550px) {
-                transform:  translateX(0);
-            }
+			@media screen and (max-width: 550px) {
+				transform: translateX(0);
+			}
 
-            svg {
-                transform: translateY(-50%) translateX(2rem);
-            }
-        }
-        
-        &.linkActive {
-            color: $main;
+			svg {
+				transform: translateY(-50%) translateX(2rem);
+			}
+		}
 
-            svg {
-                fill: $main;
-            }
-        }
-    }
+		&.linkActive {
+			color: $main;
+
+			svg {
+				fill: $main;
+			}
+		}
+	}
 }
