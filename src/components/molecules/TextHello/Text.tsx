@@ -1,39 +1,44 @@
-import { FC } from 'react';
-import { useActions, useAppSelector, useAudio } from '../../../hooks/hooks';
-import Title from '../../atoms/Title/Title';
-import styles from './Text.module.scss'
+import { FC } from "react"
+import { useAppSelector, useAudio } from "../../../hooks/hooks"
+import { useActions } from "../../../hooks/useActions"
+import Title from "../../atoms/Title/Title"
+import styles from "./Text.module.scss"
 
-const TextHello: FC = (props) => {
+const TextHello: FC = props => {
+	const { setForm } = useActions()
+	const { main, sound } = useAppSelector(state => state.main)
+	const { playBtn, playWoohv2 } = useAudio()
 
-    const {setForm} = useActions()
-    const { main, sound } = useAppSelector(state => state.main)
-    const {playBtn, playWoohv2} = useAudio()
+	const titleText: string[] | undefined = main?.text.split("")
 
-    const titleText: string[] | undefined = main?.text.split('')
+	const openModal = () => {
+		setForm(true)
+		sound && playBtn()
+		sound && playWoohv2()
+	}
 
-    const openModal = () => {
-        setForm(true)
-        sound && playBtn()
-        sound && playWoohv2()
-    }
-    
-    return (
-        <div className={styles.info}>
-            <div className={styles["text__content"]}>
-                <h1 className={styles["text__me"]}>{main?.title}&nbsp; 
-                    <span className={styles["glitch"]} data-text="Dmitry">{main?.glitch}</span>
-                </h1>
-                
-                {!!titleText?.length && <Title text={titleText}/>}
+	return (
+		<div className={styles.info}>
+			<div className={styles["text__content"]}>
+				<h1 className={styles["text__me"]}>
+					{main?.title}&nbsp;
+					<span className={styles["glitch"]} data-text='Dmitry'>
+						{main?.glitch}
+					</span>
+				</h1>
 
-                <h2 className={styles["prof__me"]}>{main?.subtitle}</h2>
-                
-                <div className={styles["send-link"]}>
-                    <button className={styles["send-btn"]} onClick={openModal}>написать мне</button>
-                </div>
-            </div>
-        </div>
-    )
+				{!!titleText?.length && <Title text={titleText} />}
+
+				<h2 className={styles["prof__me"]}>{main?.subtitle}</h2>
+
+				<div className={styles["send-link"]}>
+					<button className={styles["send-btn"]} onClick={openModal}>
+						написать мне
+					</button>
+				</div>
+			</div>
+		</div>
+	)
 }
 
 export default TextHello

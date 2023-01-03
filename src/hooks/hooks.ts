@@ -1,109 +1,71 @@
-import { TypedUseSelectorHook, useDispatch, useSelector } from 'react-redux'
-import useSound from 'use-sound'
-import type { RootState, AppDispatch } from '../store/index'
-import { setData, setForm, setImages, setSkip, setSound, setStartIntro, setWork } from '../store/redusers/main/main'
-import btn from '../assets/audio/btn.mp3'
-import wooh from '../assets/audio/wooh.mp3'
-import woohv2 from '../assets/audio/woohv2.mp3'
-import ambient from '../assets/audio/ambient.mp3'
-import { IImage, IWorks } from '../store/redusers/main/types'
+import { TypedUseSelectorHook, useDispatch, useSelector } from "react-redux"
+import useSound from "use-sound"
+import type { RootState, AppDispatch } from "../store/index"
+import btn from "../assets/audio/btn.mp3"
+import wooh from "../assets/audio/wooh.mp3"
+import woohv2 from "../assets/audio/woohv2.mp3"
+import ambient from "../assets/audio/ambient.mp3"
 
 export const useAppDispatch: () => AppDispatch = useDispatch
 export const useAppSelector: TypedUseSelectorHook<RootState> = useSelector
 
-export const useActions = () => {
-    const dispatch = useAppDispatch()
+const useAmbient = () => {
+	const [play, { stop }] = useSound(ambient, {
+		volume: 0.7,
+	})
 
-    return {
-        setData: (data: any) => {
-            sessionStorage.setItem('data', JSON.stringify(data))
-            dispatch(setData(data))
-        },
-        setSkip: (value: boolean) => {
-            dispatch(setSkip(value))
-        },
-        setStartIntro: (value: boolean) => {
-            dispatch(setStartIntro(value))
-        },
-        setSound: (value: boolean) => {
-            dispatch(setSound(value))
-        },
-        setImages: (value: IImage[]) => {
-            sessionStorage.setItem('images', JSON.stringify(value))
-            dispatch(setImages(value))
-        },
-        setWork: (value: any) => {
-            dispatch(setWork(value))
-        },
-        setForm: (value: boolean) => {
-            dispatch(setForm(value))
-        },
+	const playAmbient = () => {
+		play()
+	}
 
-    }
+	const stopAmbient = () => {
+		stop()
+	}
+
+	return { playAmbient, stopAmbient }
 }
 
-const useAmbient = () => {  
-    const [play, {stop}] = useSound(ambient, 
-        {
-            volume: 0.7
-        })
+const useBtn = () => {
+	const [play] = useSound(btn, {
+		volume: 0.5,
+	})
 
-    const playAmbient = () => {
-        play()
-    }
+	const playBtn = () => {
+		play()
+	}
 
-    const stopAmbient = () => {
-        stop()
-    }
-
-    return { playAmbient, stopAmbient }
+	return { playBtn }
 }
 
-const useBtn = () => {  
-    const [play] = useSound(btn, 
-        {
-            volume: 0.5
-        })
+const useWoohV2 = () => {
+	const [play] = useSound(woohv2, {
+		volume: 0.5,
+	})
 
-    const playBtn = () => {
-        play()
-    }
+	const playWoohv2 = () => {
+		play()
+	}
 
-    return { playBtn }
+	return { playWoohv2 }
 }
 
-const useWoohV2 = () => {  
-    const [play] = useSound(woohv2, 
-        {
-            volume: 0.5
-        })
+const useWooh = () => {
+	const [play] = useSound(wooh, {
+		volume: 0.5,
+	})
 
-    const playWoohv2 = () => {
-        play()
-    }
+	const playWooh = () => {
+		play()
+	}
 
-    return { playWoohv2 }
-}
-
-const useWooh = () => {  
-    const [play] = useSound(wooh, 
-        {
-            volume: 0.5
-        })
-
-    const playWooh = () => {
-        play()
-    }
-
-    return { playWooh }
+	return { playWooh }
 }
 
 export const useAudio = () => {
+	const { playBtn } = useBtn()
+	const { playWooh } = useWooh()
+	const { playWoohv2 } = useWoohV2()
+	const { playAmbient, stopAmbient } = useAmbient()
 
-    const {playBtn} = useBtn()
-    const {playWooh} = useWooh()
-    const {playWoohv2} = useWoohV2()
-    const {playAmbient, stopAmbient} = useAmbient()
-
-    return { playBtn, playWooh, playWoohv2, playAmbient, stopAmbient }
+	return { playBtn, playWooh, playWoohv2, playAmbient, stopAmbient }
 }

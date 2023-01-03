@@ -1,38 +1,41 @@
-import react, { FC } from 'react'
-import styles from './style.module.scss'
-import cn from 'classnames'
-import { IWorks } from '../../../store/redusers/main/types'
+import { FC } from "react"
+import styles from "./style.module.scss"
+import { IWorks } from "../../../store/redusers/main/types"
 
-type Description = {
-    work: IWorks
+type DescriptionType = {
+	work: IWorks
 }
 
+const Description: FC<DescriptionType> = ({ work }) => {
+	const titleTecnology = work?.technology.join(", ")
 
-const Description: FC<Description>  = ({work}) => {
+	const dateConverter = (i: number) => {
+		if (i < 10) {
+			return "0" + i
+		}
+		return i
+	}
 
-    const titleTecnology = work?.technology.join(', ')
+	const date = new Date(work.date)
+	const dateDisplay =
+		dateConverter(date.getDate()) +
+		"." +
+		dateConverter(date.getMonth() + 1) +
+		"." +
+		date.getFullYear()
 
-    const dateConverter = (i: number) => {
-        if (i < 10) {
-            return '0' + i
-        }
-        return i
-    }
+	const linkText = work.link.includes("google") ? "google play" : "git"
 
-    const date = work.date.toDate()
-    const dateDisplay = dateConverter(date.getDate()) + '.' + dateConverter(date.getMonth()) 
-    + '.'+ date.getFullYear()
-
-    const linkText = work.link.includes('google') ? 'google play' : 'git'
-
-    return (
-        <dd className={styles.description}>
-            <h3>{work.name}</h3>
-            <p>{titleTecnology}</p>
-            <p>{dateDisplay}</p>
-            <a href={work.link} target="_blank">{linkText}</a>
-        </dd> 
-    )
+	return (
+		<dd className={styles.description}>
+			<h3>{work.name}</h3>
+			<p>{titleTecnology}</p>
+			<p>{dateDisplay}</p>
+			<a href={work.link} target='_blank' rel='noreferrer'>
+				{linkText}
+			</a>
+		</dd>
+	)
 }
 
 export default Description

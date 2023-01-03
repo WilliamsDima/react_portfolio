@@ -1,47 +1,47 @@
-import styles from './style.module.scss'
-import { useActions, useAppSelector, useAudio } from '../../../hooks/hooks'
-import Title from '../../atoms/Title/Title'
-import TextPage from '../../molecules/TextPage'
-import Mars from '../../organisms/Planets/Mars/Mars'
-import { Socials } from '../../atoms/Socials/Socials'
-import { memo } from 'react'
+import styles from "./style.module.scss"
+import { useAppSelector, useAudio } from "../../../hooks/hooks"
+import Title from "../../atoms/Title/Title"
+import TextPage from "../../molecules/TextPage"
+import Mars from "../../organisms/Planets/Mars/Mars"
+import { Socials } from "../../atoms/Socials/Socials"
+import { memo } from "react"
+import { useActions } from "../../../hooks/useActions"
 
 const AboutTemplate = memo(() => {
+	const { setForm } = useActions()
+	const { about, sound } = useAppSelector(state => state.main)
 
-    const {setForm} = useActions()
-    const { about, sound } = useAppSelector(state => state.main)
+	const { playBtn, playWoohv2 } = useAudio()
 
-    const { playBtn, playWoohv2 } = useAudio()
+	const modalHandler = () => {
+		setForm(true)
+		sound && playBtn()
+		sound && playWoohv2()
+	}
 
-    const modalHandler = () => {
-        setForm(true)
-        sound && playBtn()
-        sound && playWoohv2()
-    }
+	const titleText: string[] | undefined = about?.title.split("")
 
-    const titleText: string[] | undefined = about?.title.split('')
+	return (
+		<div className={styles.container}>
+			{about && (
+				<>
+					<div className={styles.pageContent}>
+						<Title text={titleText || []} />
 
-    return (
-        <div className={styles.container}>
+						<TextPage data={about?.text || []} />
 
-            {about && <>
+						<button onClick={modalHandler} className={styles["link-add-team"]}>
+							взять в команду
+						</button>
 
-                <div className={styles.pageContent}>
-                    <Title text={titleText || []}/>
-                    
-                    <TextPage data={about?.text || []}/>
+						<Socials />
+					</div>
 
-                    <button onClick={modalHandler} className={styles["link-add-team"]}>взять в команду</button>
-
-                    <Socials />
-
-                </div>
-
-                <Mars />
-            
-            </>}
-        </div>
-    )
+					<Mars />
+				</>
+			)}
+		</div>
+	)
 })
 
 export default AboutTemplate
