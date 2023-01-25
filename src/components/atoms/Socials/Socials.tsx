@@ -1,4 +1,5 @@
 import InstagramIcon from "../Icons/Instagram"
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 import LinkedinIcon from "../Icons/Linkedin"
 import TelegramIcon from "../Icons/Telegram"
 import VkIcon from "../Icons/Vk"
