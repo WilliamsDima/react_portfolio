@@ -18,10 +18,10 @@ export const Socials = () => {
 			Icon: () => <TelegramIcon />,
 			link: "https://t.me/DyWilliams",
 		},
-		{
-			Icon: () => <LinkedinIcon />,
-			link: "https://ru.linkedin.com/in/dmitry-lemetin-87b412238/ru",
-		},
+		// {
+		// 	Icon: () => <LinkedinIcon />,
+		// 	link: "https://ru.linkedin.com/in/dmitry-lemetin-87b412238/ru",
+		// },
 	]
 
 	return (
